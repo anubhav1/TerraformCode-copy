@@ -315,7 +315,7 @@ resource "aws_autoscaling_policy" "ghost_auto_scaling_policy" {
 
 # Create Auto Scaling Group
 resource "aws_autoscaling_group" "ghost_asg2" {
-  name = "Ghost ASG2"  
+  name = "Ghost ASG3"  
   min_size             = 2
   max_size             = 5
   desired_capacity     = 2
@@ -421,7 +421,7 @@ resource "aws_kms_key" "default" {
 
 resource "aws_db_instance" "replica" {
   provider = aws.secondary
-  identifier = "mydb-replica"
+  identifier = "mydb-replica2"
   # Source database. For cross-region use db_instance_arn
   replicate_source_db    = aws_db_instance.primary.arn
   instance_class          = "db.t3.micro"
