@@ -11,7 +11,7 @@ terraform {
 
 provider "aws" {
   //alias  = "primary"
-  profile = "default"  
+  //profile = "default"  
   region  = "eu-central-1"
 }
 
