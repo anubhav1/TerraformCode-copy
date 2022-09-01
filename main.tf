@@ -278,7 +278,7 @@ resource "aws_iam_role_policy_attachment" "ec2-ssm-policy" {
 
 # Create Launch Template
 resource "aws_launch_template" "ghostLaunchTemplate2" {
-  name = "ghostLaunchTemplate2"
+  name = "ghostLaunchTemplate3"
   iam_instance_profile {
     arn = aws_iam_instance_profile.ec2_ssm_profile2.arn
   }
@@ -399,7 +399,7 @@ tags = {
 
 resource "aws_db_instance" "primary" {
   allocated_storage       = 10
-  identifier              = "mydb"
+  identifier              = "mydb2"
   engine                  = "mysql"
   engine_version          = "8.0.28"
   instance_class          = "db.t3.micro"
