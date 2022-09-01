@@ -20,6 +20,16 @@ provider "aws" {
   region = "us-east-1"
 }
 
+terraform {
+    backend "s3" {
+      encrypt = true
+      bucket = "my-tf-test-bucket7827"
+      dynamodb_table = "Terraform-State-Lock-Dynamo"
+      key = "path/path/terraform.tfstate"
+      region = "eu-central-1"
+  }
+}
+
 # Creating VPC
 resource "aws_vpc" "ghostvpc" {
   cidr_block       = "${var.vpc_cidr}"
