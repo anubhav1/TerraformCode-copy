@@ -255,7 +255,7 @@ resource "aws_iam_instance_profile" "ec2_ssm_profile2" {
 }
 
 resource "aws_iam_role" "ec2_ssm_role" {
-  name = "EC2_SSM_Role"
+  name = "EC2_SSM_Role2"
   assume_role_policy = jsonencode({
         Version = "2012-10-17"
         Statement = [
@@ -340,7 +340,7 @@ resource "aws_autoscaling_group" "ghost_asg2" {
 
 # Creating Application LoadBalancer
 resource "aws_lb" "external-ghost-alb" {
-  name               = "ExternalGhostALB"
+  name               = "ExternalGhostALB2"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.ec2-sg.id]
@@ -362,7 +362,7 @@ resource "aws_lb_listener" "ghost_listener" {
 
 #Creating Application LoadBalancer Target Group
 resource "aws_lb_target_group" "ghost-target-group" {
-  name     = "ALB-Ghost-TG"
+  name     = "ALB-Ghost-TG2"
   target_type = "instance"
   port     = 80
   protocol = "HTTP"
@@ -379,7 +379,7 @@ resource "aws_lb_target_group" "ghost-target-group" {
 
 # Creating RDS Subnet Group
 resource "aws_db_subnet_group" "default" {
-  name       = "main"
+  name       = "main1a"
   subnet_ids = [aws_subnet.database-subnet-1.id, aws_subnet.database-subnet-2.id]
 tags = {
     Name = "RDS subnet group"
@@ -389,7 +389,7 @@ tags = {
 # Creating RDS Subnet Group
 resource "aws_db_subnet_group" "default2" {
   provider = aws.secondary  
-  name       = "main2"
+  name       = "main2a"
   subnet_ids = [aws_subnet.database-subnet-1a.id, aws_subnet.database-subnet-2a.id]
 tags = {
     Name = "RDS subnet group"
