@@ -250,7 +250,7 @@ tags = {
 
 
 resource "aws_iam_instance_profile" "ec2_ssm_profile2" {
-  name = "ec2_ssm_profile2"
+  name = "ec2_ssm_profile3"
   role = aws_iam_role.ec2_ssm_role.name
 }
 
@@ -397,7 +397,7 @@ tags = {
 }
 
 
-resource "aws_db_instance" "default" {
+resource "aws_db_instance" "primary" {
   allocated_storage       = 10
   identifier              = "mydb"
   engine                  = "mysql"
@@ -423,7 +423,7 @@ resource "aws_db_instance" "replica" {
   provider = aws.secondary
   identifier = "mydb-replica"
   # Source database. For cross-region use db_instance_arn
-  replicate_source_db    = aws_db_instance.default.arn
+  replicate_source_db    = aws_db_instance.primary.arn
   instance_class          = "db.t3.micro"
   kms_key_id           = aws_kms_key.default.arn
   multi_az               = false
